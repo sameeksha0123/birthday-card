@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<style>
+    /* Reset and canvas setup */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #eeb1d0;
+}
+
+/* Container spanning the screen width */
+.pic-container {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+}
+
+/* Building the pic shape using a single div */
+.pic {
+    position: absolute;
+    width: 200px;
+    height: 250px;
+    background-color: #ff3366;
+    bottom: -50px;             /* Starts just off-screen */
+    opacity: 0;
+    animation: flyUp 6s linear infinite;
+}
+
+/* Pseudo-elements form the rounded tops of the pic */
+.pic::before,
+.pic::after {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 250px;
+    background-color: #ff3366;
+    border-radius: 50%;
+}
+
+.pic::before {
+    top: -10px;
+    left: 0;
+}
+
+.pic::after {
+    left: 10px;
+    top: 0;
+}
+
+/* Defining unique animation variations for each pic */
+.h1 { left: 10%; animation-duration: 5s; animation-delay: 0s; transform: scale(0.6) rotate(-4deg); }
+.h2 { left: 30%; animation-duration: 7s; animation-delay: 1.5s; transform: scale(1.1) rotate(-4deg); background-color: #ff66b2; }
+.h3 { left: 50%; animation-duration: 6s; animation-delay: 0.8s; transform: scale(0.8) rotate(-4deg); }
+.h4 { left: 70%; animation-duration: 8s; animation-delay: 2.2s; transform: scale(1.3) rotate(-4deg); background-color: #ff0044; }
+.h5 { left: 85%; animation-duration: 5.5s; animation-delay: 0.3s; transform: scale(0.7) rotate(-4deg); }
+
+.h6 { right: 20%; animation-duration: 5s; animation-delay: 0s; transform: scale(0.6) rotate(-4deg); }
+.h7 { right: 40%; animation-duration: 7s; animation-delay: 1.5s; transform: scale(1.1) rotate(-4deg); background-color: #ff66b2; }
+.h8 { right: 60%; animation-duration: 6s; animation-delay: 0.8s; transform: scale(0.8) rotate(-4deg); }
+.h9 { right: 80%; animation-duration: 8s; animation-delay: 2.2s; transform: scale(1.3) rotate(-4deg); background-color: #ff0044; }
+.h10 { left: 95%; animation-duration: 5.5s; animation-delay: 0.3s; transform: scale(0.7) rotate(-4deg); }
+
+/* Apply secondary colors to pseudo-elements for modified classes */
+.h2::before, .h2::after { background-color: #ff66b2; }
+.h4::before, .h4::after { background-color: #ff0044; }
+
+/* The flying and swaying logic */
+@keyframes flyUp {
+    0% {
+        bottom: -50px;
+        opacity: 0;
+        margin-left: 0px;
+    }
+    10% {
+        opacity: 0.8;
+    }
+    50% {
+        margin-left: 30px; /* Sways to the right midway */
+    }
+    90% {
+        opacity: 0.8;
+    }
+    100% {
+        bottom: 110vh;     /* Arrives past the top boundary */
+        opacity: 0;
+        margin-left: -30px; /* Drifts left at the end */
+    }
+}
+</style>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flying pics Animation</title>
+</head>
+<body>
+
+    <audio controls autoplay hidden>
+        <source src="assets/audio/hbd.mp3" type="audio/ogg">
+        <source src="assets/audio/hbd.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+      </audio>
+    <div class="pic-container">
+        <img  class="pic h1" src="../assets/images/IMG_4130.JPG">
+        <img  class="pic h2" src="../assets/images/IMG_4514.JPG">
+        <img  class="pic h3" src="../assets/images/IMG_5169.JPG">
+        <img  class="pic h4" src="../assets/images/IMG_5264.JPG">
+        <img  class="pic h5" src="../assets/images/IMG_5717.JPG">
+
+        <img  class="pic h6" src="assets/images/IMG_5991.JPG"/>
+        <img  class="pic h7" src="assets/images/IMG_6258.JPG">
+        <img  class="pic h8" src="assets/images/IMG_7877.JPG">
+        <img  class="pic h9" src="assets/images/IMG_7941.JPG">
+        <img  class="pic h10" src="assets/images/IMG_7943.JPG">
+</div>
+
+</body>
+</html>
